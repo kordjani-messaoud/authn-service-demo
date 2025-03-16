@@ -21,7 +21,7 @@ func main() {
 		AppName:      "My Authn Service",
 		ServerHeader: "Fiber",
 	})
-	middlewares.InitFiberMiddlewares(app, routes.InitPublicRoutes, nil)
+	middlewares.InitFiberMiddlewares(app, routes.InitPublicRoutes, routes.InitProtectedRoute)
 
 	fmt.Println("Server listen on port:", config.GlobalConfigParams.ListenIP)
 

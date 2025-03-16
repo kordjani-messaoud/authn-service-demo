@@ -26,7 +26,11 @@ func InitFiberMiddlewares(app *fiber.App,
 		c.SetUserContext(ctx)
 		return c.Next()
 	})
+	// Route that doesn't require authorization
 	initPublicRoutes(app)
+
+	// route that require authorization
+	initProtectedRoutes(app)
 
 	log.Println("Fiber middlewares initialized")
 }
