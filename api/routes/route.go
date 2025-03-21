@@ -6,7 +6,6 @@ import (
 	"authn-service-demo/infrastructure/identity"
 	"authn-service-demo/use_cases/productuc"
 	"authn-service-demo/use_cases/usermgmtuc"
-	"fmt"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -29,7 +28,8 @@ func InitProtectedRoute(app *fiber.App) {
 
 	productDataStore := datastores.NewProductDataStore()
 	createProductUseCase := productuc.NewCreateProductUseCase(productDataStore)
-	fmt.Println("Product Store:", productDataStore.Products)
-
 	grp.Post("/products", handlers.CreateProductHandler(createProductUseCase))
+
+	getProductsUseCase := productuc.NewGetProductsUseCase(productDataStore)
+	grp.Get("/products", handlers.GetProductsHandler(getProductsUseCase))
 }

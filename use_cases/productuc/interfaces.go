@@ -5,5 +5,6 @@ import (
 )
 
 type ProductDataStore interface {
+	GetAll() []entities.Product
 	Store(product *entities.Product) error
 }
