@@ -2,6 +2,7 @@ package routes
 
 import (
 	"authn-service-demo/api/handlers"
+	"authn-service-demo/api/middlewares"
 	"authn-service-demo/infrastructure/datastores"
 	"authn-service-demo/infrastructure/identity"
 	"authn-service-demo/use_cases/productuc"
@@ -28,8 +29,10 @@ func InitProtectedRoute(app *fiber.App) {
 
 	productDataStore := datastores.NewProductDataStore()
 	createProductUseCase := productuc.NewCreateProductUseCase(productDataStore)
-	grp.Post("/products", handlers.CreateProductHandler(createProductUseCase))
+	grp.Post("/products", middlewares.NewRequiresRealmRole("admin"),
+		handlers.CreateProductHandler(createProductUseCase))
 
 	getProductsUseCase := productuc.NewGetProductsUseCase(productDataStore)
-	grp.Get("/products", handlers.GetProductsHandler(getProductsUseCase))
+	grp.Get("/products", middlewares.NewRequiresRealmRole("viewer"),
+		handlers.GetProductsHandler(getProductsUseCase))
 }

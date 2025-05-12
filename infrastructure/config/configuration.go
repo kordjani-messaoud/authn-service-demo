@@ -9,9 +9,10 @@ type ConfigParams struct {
 	ListenIP   string `json:"listenIP"`
 	ListenPort string `json:"listenPort"`
 	Keycloak   struct {
-		Realm   string `json:"realm"`
-		BaseURL string `json:"baseURL"`
-		RestAPI struct {
+		Realm                string `json:"realm"`
+		RealmRS256PublickKey string `json:"realmRS256PublicKey"`
+		BaseURL              string `json:"baseURL"`
+		RestAPI              struct {
 			ClientID     string `json:"clientID"`
 			ClientSecret string `json:"clientSecret"`
 		} `json:"restAPI"`
