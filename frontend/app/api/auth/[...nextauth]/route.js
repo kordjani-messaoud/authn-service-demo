@@ -72,8 +72,11 @@ export const authOptions = {
 
         session.access_token = encrypt(token.access_token);
         session.id_token = encrypt(token.id_token);
-        session.roles = token.roles;
+        session.roles = token.decode.realm_access.roles;
+        // console.log("Users roles from token:", token.decode.realm_access.roles);
         session.error = token.error;
+
+        // console.log("Session params:", session)
         return session
     }
    }

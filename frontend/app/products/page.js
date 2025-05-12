@@ -6,11 +6,11 @@ import { SetDynamicRoute } from "@/utils/setDynamicRoute";
 
 // Allow to get all products from backend api
 async function getAllProducts() {
-    const url = `${process.en.AUTH_SERVICE_URL}/api/v1/products`;
+    const url = `${process.env.AUTH_SERVICE_URL}/api/v1/products`;
 
     let accessToken = await getAccessToken();
 
-    resp = await fetch(url, {
+    const resp = await fetch(url, {
         headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${accessToken}`,
@@ -18,16 +18,17 @@ async function getAllProducts() {
     });
 
     if (resp.ok) {
-        const products = await res.json();
+        const products = await resp.json();
         return products;
+    } else {
+        throw new Error("[products] error in getAllProducts: " + resp.status);
     }
 
-    throw new Error("[products] error in getAllProducts" + resp.Status);
 }
 
 export default async function Products() {
     const session = await getServerSession(authOptions);
-    if (session & session.roles?.includes("viewer")) {
+    if (session && session.roles?.includes("viewer")) {
         try {
             const products = await getAllProducts();
 

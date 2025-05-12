@@ -1,14 +1,14 @@
 // allow to extract access and id tokens from the session
 
 import { getServerSession } from "next-auth";
-import { authOptions } from "../app/api/[..nextauth]/route";
+import { authOptions } from "../app/api/auth/[...nextauth]/route";
 import { decrypt } from "./encryption";
 
 
 export async function getAccessToken() {
     const session = await getServerSession(authOptions);
     if (session) {
-        const  accessTokenDecrypted = decrypt(session.access)
+        const  accessTokenDecrypted = decrypt(session.access_token)
         return accessTokenDecrypted
     }
     return null

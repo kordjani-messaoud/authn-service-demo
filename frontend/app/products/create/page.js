@@ -1,4 +1,4 @@
-"user client";
+"use client";
 
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -6,7 +6,7 @@ import React, { useState, useEffect } from "react";
 
 export default function CreateProduct() {
     const { data: session, status } = useSession();
-    const router = useRouter;
+    const router = useRouter();
 
     useEffect(() => {
         if (
@@ -38,7 +38,7 @@ export default function CreateProduct() {
             event.preventDefault();
 
             const postBody = {
-                Name: productNameRef.current.valut,
+                Name: productNameRef.current.value,
                 Price: parseFloat(priceRef.current.value),
             };
 
@@ -60,7 +60,7 @@ export default function CreateProduct() {
                     setErrorMsg("[products/create] error in CreateProduct resp: " + json_err.error);
                 }
             } catch (err) {
-                setErrorMsg("[products/create] error in CreateProduct req: " + error);
+                setErrorMsg("[products/create] error in CreateProduct req: " + err);
             }
         };
 

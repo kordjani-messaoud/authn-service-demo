@@ -12,10 +12,10 @@ export function encrypt(text) {
 
 
 export function decrypt(encryptedText) {
-    const secretKey = process.env.NEXAUTH_SECRET;
+    const secretKey = process.env.NEXTAUTH_SECRET;
     const cryptr = new Cryptr(secretKey);
-
     const text = cryptr.decrypt(encryptedText);
+
     return text;
 }
 

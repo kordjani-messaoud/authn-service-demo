@@ -32,7 +32,7 @@ export default function AuthStatus() {
                 logged in as <span className="text-yellow-100">{session.user.email}</span>{" "}
                 <button
                     className="bg-blue-900 font-bold text-white py-1 px-2 rounded border border-gray-300 hover:bg-blue-800 hover:border-blue-700 hover:text-white"
-                    onclick={() => {
+                    onClick={() => {
                         keycloakSessionLogOut().then(() => signOut({ callbackUrl: "/" }));
                     }}>
                     Log out

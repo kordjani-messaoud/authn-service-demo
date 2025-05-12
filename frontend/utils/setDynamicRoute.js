@@ -12,6 +12,6 @@ export function SetDynamicRoute() {
 
     useEffect(() => {
         router.refresh();
-    }, {router});
+    }, [router]);
     return <></>;
 }
