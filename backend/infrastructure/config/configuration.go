@@ -35,3 +35,13 @@ func ExtractConfigParams(path string, configparams *ConfigParams) error {
 
 	return nil
 }
+
+func LoadConfigParamsFromEnv(ConfigParams *ConfigParams) {
+	ConfigParams.ListenIP = os.Getenv("LISTEN_IP")
+	ConfigParams.ListenPort = os.Getenv("LISTEN_PORT")
+	ConfigParams.Keycloak.Realm = os.Getenv("KEYCLOAK_REALM")
+	ConfigParams.Keycloak.RealmRS256PublickKey = os.Getenv("KEYCLOAK_REALM_RS256_PUBLIC_KEY")
+	ConfigParams.Keycloak.BaseURL = os.Getenv("KEYCLOAK_BASE_URL")
+	ConfigParams.Keycloak.RestAPI.ClientID = os.Getenv("KEYCLOAK_CLIENT_ID")
+	ConfigParams.Keycloak.RestAPI.ClientSecret = os.Getenv("KEYCLOAK_CLIENT_SECRET")
+}

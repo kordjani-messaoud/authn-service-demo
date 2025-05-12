@@ -3,7 +3,7 @@ package productuc
 import (
 	"authn-service-demo/domain/entities"
 	"context"
-	"errors"
+	"fmt"
 	"time"
 
 	"github.com/google/uuid"
@@ -52,7 +52,7 @@ func (uc *CreateProductUseCase) validate(req CreateProductRequest) error {
 		len(req.Name) <= 15 &&
 		req.Price > 0 {
 		return nil
+	} else {
+		return fmt.Errorf("[productuc] create product request not valid: name: %v, price: %v ", req.Name, req.Price)
 	}
-
-	return errors.New("[productuc] create product request not valid")
 }

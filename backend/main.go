@@ -15,20 +15,22 @@ const (
 )
 
 func main() {
-	config.ExtractConfigParams(PATH, &config.GlobalConfigParams)
-
+	// Extract configuration params
+	// config.ExtractConfigParams(PATH, &config.GlobalConfigParams)
+	config.LoadConfigParamsFromEnv(&config.GlobalConfigParams)
+	// Create Fiber app
 	app := fiber.New(fiber.Config{
 		AppName:      "My Authn Service",
 		ServerHeader: "Fiber",
 	})
+	// Add middlewares and routes
 	middlewares.InitFiberMiddlewares(app, routes.InitPublicRoutes, routes.InitProtectedRoute)
 
+	// Server listens
 	fmt.Println("Server listen on port:", config.GlobalConfigParams.ListenIP)
-
 	err := app.Listen(fmt.Sprintf("%v:%v",
 		config.GlobalConfigParams.ListenIP,
 		config.GlobalConfigParams.ListenPort))
-
 	log.Fatal(err)
 
 }
