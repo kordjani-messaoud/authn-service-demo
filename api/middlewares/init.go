@@ -1,6 +1,7 @@
 package middlewares
 
 import (
+	"authn-service-demo/infrastructure/identity"
 	"authn-service-demo/shared/enums"
 	"context"
 	"log"
@@ -29,6 +30,8 @@ func InitFiberMiddlewares(app *fiber.App,
 	// Route that doesn't require authorization
 	initPublicRoutes(app)
 
+	tokenRetrospector := identity.NewIdentityManager()
+	app.Use(NewJwtMiddleware(tokenRetrospector))
 	// route that require authorization
 	initProtectedRoutes(app)
 
