@@ -2,11 +2,15 @@ pipeline {
     agent any
     stages {
         stage("build") {
-            echo "Building image"
+            steps {
+                echo "Building image"
+            }
         }
         
         stage("push") {
-            echo "Pushing image to Harbor registery"
+            steps {
+                echo "Pushing image to Harbor registry"
+            }
         }
     }
 }
