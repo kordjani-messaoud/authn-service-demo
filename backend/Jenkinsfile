@@ -19,10 +19,8 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                dir("backend") {
-                    script {
-                        dockerImage = docker.build("${IMAGE}")
-                    }
+                script {
+                        dockerImage = docker.build("${IMAGE}", "-f ./backend/Dockerfile")
                 }
             }
         }
