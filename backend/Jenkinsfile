@@ -2,11 +2,11 @@ pipeline {
     agent any
 
     environment {
-        CONTAINER_REG = "container-reg.icosnet.local/auth-srv-backend"
+        CONTAINER_REG = "container-reg.icosnet.local"
         VERSION = "1.0"
         IMAGE_NAME = "authn-service-backend"
         IMAGE_TAG = "latest"
-        PROJECT =  "SSO"
+        PROJECT =  "sso"
         IMAGE = "${CONTAINER_REG}/${PROJECT}/${IMAGE_NAME}:${VERSION}"
     }
 
