@@ -1,16 +1,48 @@
-pipeline {  
+pipeline {
     agent any
+
+    environment {
+        CONTAINER_REG = "container-reg.icosnet.local/auth-srv-backend"
+        VERSION = "1.0"
+        IMAGE_NAME = "authn-service-backend"
+        IMAGE_TAG = "latest"
+        PROJECT =  "SSO"
+        IMAGE = "${CONTAINER_REG}/${PROJECT}/${IMAGE_NAME}:${VERSION}"
+    }
+
     stages {
-        stage("build") {
+        stage('Checkout') {
             steps {
-                echo "Building image"
+                checkout scm
             }
         }
-        
-        stage("push") {
+
+        stage('Build Docker Image') {
             steps {
-                echo "Pushing image to Harbor registry"
+                script {
+                    dockerImage = docker.build("${IMAGE}", ".")
+                }
             }
+        }
+
+        stage('Push to Local Registry') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'Harbor', usernameVariable: 'HARBOR_USER', passwordVariable: 'HARBOR_PASS')]) {
+                sh """
+                    echo "$HARBOR_PASS" | docker login ${CONTAINER_REG} -u "$HARBOR_USER" --password-stdin
+                    docker push ${IMAGE}
+                    docker logout ${CONTAINER_REG}
+                """
+                }
+            }
+        }
+
+    post {
+        success {
+            echo "Docker image successfully built and pushed to localhost:5000"
+        }
+        failure {
+            echo "Pipeline failed."
         }
     }
 }
