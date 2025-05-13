@@ -1,0 +1,9 @@
+node {
+    checkout scm
+
+    docker.withRegistery("https://container-req.icosnet.local", "jenkins") {
+        def customImage = docker.build("sso/auth-srv-backend-${env.BUILD_ID}")
+
+        customImage.push()
+    }
+}
