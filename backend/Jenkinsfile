@@ -1,9 +1,12 @@
-node {
-    checkout scm
-
-    docker.withRegistery("https://container-req.icosnet.local", "jenkins") {
-        def customImage = docker.build("sso/auth-srv-backend-${env.BUILD_ID}")
-
-        customImage.push()
+pipeline {  
+    agent any
+    stages {
+        stage("build") {
+            echo "Building image"
+        }
+        
+        stage("push") {
+            echo "Pushing image to Harbor registery"
+        }
     }
 }
