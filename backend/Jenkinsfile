@@ -8,6 +8,7 @@ pipeline {
         IMAGE_TAG = "latest"
         PROJECT =  "sso"
         IMAGE = "${CONTAINER_REG}/${PROJECT}/${IMAGE_NAME}:${VERSION}"
+        PATH = "backend/Dockerfile"
     }
 
     stages {
@@ -20,7 +21,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                        dockerImage = docker.build("${IMAGE}", "-f ./backend/Dockerfile")
+                        dockerImage = docker.build("${IMAGE}", "-f ${PATH}")
                 }
             }
         }
