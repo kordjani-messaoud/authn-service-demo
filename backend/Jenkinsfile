@@ -22,7 +22,7 @@ pipeline {
             steps {
                 script {
                         // dockerImage = docker.build("${IMAGE}", "-f ${PATH} backend")
-                        sh "docker build -t ${IMAGE} -f ${PATH} ./backend "
+                        // sh "docker build -t ${IMAGE} -f ${PATH} ./backend "
                         sh "cd ./backend && echo $PWD"
                 }
             }
