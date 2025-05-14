@@ -22,19 +22,21 @@ pipeline {
             steps {
                 script {
                         // dockerImage = docker.build("${IMAGE}", "-f ${PATH} backend")
-                        sh " cd ./backend/ && docker build -t ${IMAGE} -f ${PATH} ./backend "
+                        sh "docker build -t ${IMAGE} -f ${PATH} ./backend "
+                        sh "cd ./backend && echo $PWD"
                 }
             }
         }
 
         stage('Push to Local Registry') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'Harbor', usernameVariable: 'HARBOR_USER', passwordVariable: 'HARBOR_PASS')]) {
-                sh """
-                    echo "$HARBOR_PASS" | docker login ${CONTAINER_REG} -u "$HARBOR_USER" --password-stdin
-                    docker push ${IMAGE}
-                    docker logout ${CONTAINER_REG}
-                """
+                // withCredentials([usernamePassword(credentialsId: 'Harbor', usernameVariable: 'HARBOR_USER', passwordVariable: 'HARBOR_PASS')]) {
+                // sh """
+                //     echo "$HARBOR_PASS" | docker login ${CONTAINER_REG} -u "$HARBOR_USER" --password-stdin
+                //     docker push ${IMAGE}
+                //     docker logout ${CONTAINER_REG}
+                // """
+                echo "Pushing"
                 }
             }
         }
