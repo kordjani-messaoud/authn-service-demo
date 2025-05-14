@@ -21,7 +21,8 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                        dockerImage = docker.build("${IMAGE}", "-f ${PATH}")
+                        // dockerImage = docker.build("${IMAGE}", "-f ${PATH} backend")
+                        sh " docker build -t ${IMAGE} -f ${PATH} backend "
                 }
             }
         }
