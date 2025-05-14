@@ -4,8 +4,7 @@ FROM golang:1.24-bookworm
 
 WORKDIR /app
 
-# pre-copy/cache go.mod for pre-downloading dependencies and only redownloading them in subsequent builds if they change
-COPY --exclude=.gitignore --exclude=/bin --exclude=.env  ./backend /app/
+COPY --exclude=.gitignore --exclude=/bin --exclude=.env  . /app
 
 RUN go mod download
 
