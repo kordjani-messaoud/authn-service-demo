@@ -36,8 +36,8 @@ pipeline {
                 //     docker push ${IMAGE}
                 //     docker logout ${CONTAINER_REG}
                 // """
+                // }
                 echo "Pushing"
-                }
             }
         }
     }
