@@ -7,6 +7,7 @@ import { SetDynamicRoute } from "@/utils/setDynamicRoute";
 // Allow to get all products from backend api
 async function getAllProducts() {
     const url = `${process.env.AUTH_SERVICE_URL}/api/v1/products`;
+    console.log("BACKEND URL: ", url)
 
     let accessToken = await getAccessToken();
 
