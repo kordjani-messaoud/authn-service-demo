@@ -24,7 +24,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                        dockerImage = docker.build("${IMAGE}", "-f ${PATH} ${CONTEXT}")
+                        dockerImage = docker.build("${IMAGE_FULL_NAME}", "-f ${PATH} ${CONTEXT}")
                 }
             }
         }
