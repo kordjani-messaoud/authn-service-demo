@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        CONTAINER_REG = "container-reg.icosnet.local"
+        CONTAINER_REG = "cicd-worker-01.icosnet.local"
         VERSION = "1.0"
         IMAGE_NAME = "authn-service-backend"
         IMAGE_TAG = "latest"
@@ -33,7 +33,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'Harbor', usernameVariable: 'HARBOR_USER', passwordVariable: 'HARBOR_PASS')]) {
                 sh """
-                    docker login ${CONTAINER_REG} -u "$HARBOR_USER" -p "$HARBOR_PASS"
+                    echo "$HARBOR_PASS" | docker login ${CONTAINER_REG} -u "$HARBOR_USER" --password-stdin 
                     docker push ${IMAGE_FULL_NAME}
                     docker logout ${CONTAINER_REG}
                 """
