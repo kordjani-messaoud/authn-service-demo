@@ -16,7 +16,7 @@ const (
 
 func main() {
 	// Extract configuration params
-	// config.ExtractConfigParams(PATH, &config.GlobalConfigParams)
+	//  config.ExtractConfigParams(PATH, &config.GlobalConfigParams)
 	config.LoadConfigParamsFromEnv(&config.GlobalConfigParams)
 	// Create Fiber app
 	app := fiber.New(fiber.Config{
