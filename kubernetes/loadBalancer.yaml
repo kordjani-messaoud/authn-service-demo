@@ -3,7 +3,7 @@ kind: Service
 
 metadata:
   name: my-app-backend-lb
-  labals:
+  labels:
     app: my-app-backend
 
 spec:
@@ -13,6 +13,6 @@ spec:
   ports:
     - name: http
       port: 80
-      targetPort: 8100
+      targetPort: 8080
       protocol: TCP
   LoadBalancerIP: 192.168.101.106
