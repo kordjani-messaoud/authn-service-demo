@@ -1,0 +1,14 @@
+bin/
+
+.git
+.gitignore
+
+config.json
+
+Dockerfile
+Jenkinsfile
+kubernetes/
+
+README.md
+
+.env
