@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: my-app-backend-lb
+  labals:
+    app: my-app-backend
+
+spec:
+  selector:
+    app: my-app-frontend
+  type: LoadBalancer
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8100
+      protocol: TCP
+  LoadBalancerIP: 192.168.101.106

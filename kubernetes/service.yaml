@@ -3,6 +3,8 @@ kind: Service
 
 metadata:
   name: my-app-backend-svc
+  labels:
+    app: my-app-backend
 
 spec:
   selector:
