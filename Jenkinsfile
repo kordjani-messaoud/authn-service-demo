@@ -9,7 +9,7 @@ pipeline {
         PROJECT =  "sso"
         IMAGE_FULL_NAME = "${CONTAINER_REG}/${PROJECT}/${IMAGE_NAME}:${VERSION}"
         DOCKERFILE_PATH = "./Dockerfile"
-        CONTEXT = ""
+        CONTEXT = "."
 
         PATH = "/bin:/usr/bin:/usr/local/bin"
     }
