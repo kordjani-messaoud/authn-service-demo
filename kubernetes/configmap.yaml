@@ -7,6 +7,6 @@ metadata:
 
 data:
   LISTEN_IP: "0.0.0.0"
-  LISTEN_PORT: 8080
+  LISTEN_PORT: "8080"
   KEYCLOAK_REALM: ICOSNET
   KEYCLOAK_BASE_URL: "http://auth-service.com"
