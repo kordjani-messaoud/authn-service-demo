@@ -10,23 +10,23 @@ spec:
   replicas: 1
   selector:
     matchLabel:
-      app: my-app-backendn-backend
-    strategy:
-      type: RollingUpdate
-      rollingUpdate:
-        maxSurge: 3
-    template:
-      metadata:
-        labels:
-          app: my-app-backend
-      spec:
-        containers:
-          - name: my-app-backend
-            image: container-reg.icosnet.local/sso/my-app-backend:latest
-            ports:
-              - containerPort: 8080
-            envFrom:
-              - configMapRef:
-                  name: my-app-backend-configmap
-              - secretRef:
-                  name: my-app-backend-secret
+      app: my-app-backend
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 3
+  template:
+    metadata:
+      labels:
+        app: my-app-backend
+    spec:
+      containers:
+        - name: my-app-backend
+          image: container-reg.icosnet.local/sso/my-app-backend:latest
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: my-app-backend-configmap
+            - secretRef:
+                name: my-app-backend-secret
