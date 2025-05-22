@@ -29,4 +29,3 @@ spec:
                 name: my-app-backend-configmap
             - secretRef:
                 name: my-app-backend-secret
-
