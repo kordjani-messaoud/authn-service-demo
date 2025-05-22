@@ -1,20 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
-
 metadata:
   name: my-app-backend
   labels:
     app: my-app-backend
-
 spec:
   replicas: 1
   selector:
-    matchLabel:
+    matchLabels:   
       app: my-app-backend
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxSurge: 3
+      maxSurge: 3 
+      maxUnavailable: 1 
   template:
     metadata:
       labels:
@@ -30,3 +29,4 @@ spec:
                 name: my-app-backend-configmap
             - secretRef:
                 name: my-app-backend-secret
+
