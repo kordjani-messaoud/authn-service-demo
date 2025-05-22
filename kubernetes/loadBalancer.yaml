@@ -15,4 +15,4 @@ spec:
       port: 80
       targetPort: 8080
       protocol: TCP
-  LoadBalancerIP: 192.168.101.106
+  loadBalancerIP: 192.168.101.106
