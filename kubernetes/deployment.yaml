@@ -7,13 +7,13 @@ metadata:
 spec:
   replicas: 1
   selector:
-    matchLabels:   
+    matchLabels:
       app: my-app-backend
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxSurge: 3 
-      maxUnavailable: 1 
+      maxSurge: 3
+      maxUnavailable: 1
   template:
     metadata:
       labels:
@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: my-app-backend
-          image: container-reg.icosnet.local/sso/my-app-backend:1.0.0 # {"$imagepolicy": "flux-system:my-app-backend-policy:tag"}
+          image: 1.0.0 # {"$imagepolicy": "flux-system:my-app-backend-policy:tag"}
           ports:
             - containerPort: 8080
           envFrom:
