@@ -8,7 +8,7 @@ metadata:
 
 spec:
   selector:
-    app: my-app-frontend
+    app: my-app-backend
   type: LoadBalancer
   ports:
     - name: http
