@@ -26,8 +26,10 @@ func main() {
 	// Add middlewares and routes
 	middlewares.InitFiberMiddlewares(app, routes.InitPublicRoutes, routes.InitProtectedRoute)
 
+	fmt.Println("Hello their this is my http server")
+
 	// Server listens
-	fmt.Println("Server listen on port:", config.GlobalConfigParams.ListenIP)
+	fmt.Println("Server listen on port:", config.GlobalConfigParams.ListenPort)
 	err := app.Listen(fmt.Sprintf("%v:%v",
 		config.GlobalConfigParams.ListenIP,
 		config.GlobalConfigParams.ListenPort))
