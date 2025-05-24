@@ -13,7 +13,7 @@ import (
 
 func InitPublicRoutes(app *fiber.App) {
 	app.Get("/", func(ctx *fiber.Ctx) error {
-		return ctx.Send([]byte("Welcome to My Application backend. (((-(-_-(-_(-_(-_-)_-)-_-)_-)_-)-)))"))
+		return ctx.Send([]byte("Welcome to My Application backend. Yes Again, sorry, i'm testing FluxCD webhook reciever.  ༼つಠ益ಠ༽つ ─=≡ΣO))"))
 	})
 
 	grp := app.Group("/api/v1")
