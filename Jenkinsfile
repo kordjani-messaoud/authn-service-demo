@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         CONTAINER_REG = "cicd-worker-01.icosnet.local"
-        VERSION = "1.3.0"
+        VERSION = "1.4.0"
         IMAGE_NAME = "my-app-backend"
         IMAGE_TAG = "latest"
         PROJECT =  "sso"
