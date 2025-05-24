@@ -13,7 +13,7 @@ import (
 
 func InitPublicRoutes(app *fiber.App) {
 	app.Get("/", func(ctx *fiber.Ctx) error {
-		return ctx.Send([]byte("Welcome to My Authentication Service Backend. 	<(^_^)>"))
+		return ctx.Send([]byte("Welcome to My Application backend. (-(-_-(-_(-_(-_-)_-)-_-)_-)_-)-)"))
 	})
 
 	grp := app.Group("/api/v1")
