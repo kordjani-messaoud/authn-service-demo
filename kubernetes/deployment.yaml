@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: my-app-backend
-          image: container-reg.icosnet.local/sso/my-app-backend:1.0.1 # {"$imagepolicy": "flux-system:my-app-backend-policy"}
+          image: container-reg.icosnet.local/sso/my-app-backend:1.1.0 # {"$imagepolicy": "flux-system:my-app-backend-policy"}
           ports:
             - containerPort: 8080
           envFrom:
